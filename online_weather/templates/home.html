@@ -1,0 +1,47 @@
+{% extends 'main.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+
+<div class="content_wrapper" id="app">
+	<div v-if="infos.city">
+		<h1>
+			Weather App
+			<div class="date"> </div>
+		</h1>
+
+        <form method="get">
+            <input class="form-control" name="city">
+			<center><button class="btn btn-primary mt-2 mb-3" type="submit">Check Weather</button></center>
+		</form>
+
+		<div class="weather_card bg-success text-white">
+			<div class="weather_card_img bg-warning" :style="{backgroundImage: https://openweathermap.org/img/wn/{{data.icon}}.png}">
+				<div class="weather_card_state">
+					<span class="material-icons">
+                        <img src='https://openweathermap.org/img/wn/{{data.icon}}.png'>
+					</span>
+				</div>
+			</div>
+
+			<div class="weather_card_infos bg-success text-white">
+				<div class="weather_card_infos_title">
+                    <b>{{data.city}}</b><br>
+                    <b>{{data.description}}</b>
+				</div>
+				<div class="weather_card_infos_temp bg-success text-white">
+                    <b>{{data.celcius_temperature}}°C / {{kelvin_temperature}}°K</b?
+				</div>
+				<div class="bottom">
+					<hr>
+					<div class="weather_card_infos_bottom bg-success text-white px-4 mb-2">
+                        <b>Humidity:{{data.humidity}} - Pressure:{{data.pressure}} Pa</b>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock body %}
